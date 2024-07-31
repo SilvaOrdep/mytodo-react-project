@@ -22,8 +22,6 @@ function App() {
       category:"Pessoal",
       isCompleted:true,
     },
-
-
   ])
   return <div className="app">
     <h1>Lista de Tarefas</h1>
