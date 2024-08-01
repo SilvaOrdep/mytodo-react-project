@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from './assets/components/navbar/NavBar';
 import SideBar from './assets/components/sidebar/SideBar';
 import NoteCreator from './assets/components/notecreator/NoteCreator';
+import Todo from './assets/components/Todo';
 
 function App() {
   // eslint-disable-next-line no-unused-vars
@@ -37,17 +38,7 @@ function App() {
       <div className="todo-list">
         {todos.map((todo)=>(
           // eslint-disable-next-line react/jsx-key
-          <div className="todo">
-            <div className="content">
-              <p>{todo.text} </p>
-              <p className="category">({todo.category})</p>
-            </div>
-            <div>
-              <button>completar</button>
-              <button>editar</button>
-              <button>apagar</button>
-            </div>
-          </div>
+          <Todo todo = {todo} />
         ))}
       </div>
     </div>

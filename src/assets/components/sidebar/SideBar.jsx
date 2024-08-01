@@ -1,9 +1,19 @@
 import "./SideBar.css";
 
-const SideBar = () => {
+const Sidebar = () => {
   return (
-    <div className="sidebar">SideBar</div>
-  )
-}
+    <div className="sidebar">
+      <h2 className="sidebar-title">Filtrar:</h2>
+      <div className="filter">
+        <label htmlFor="status" className="filter-label">Status</label>
+        <select id="status" className="filter-select">
+          <option value="Todos">Todos</option>
+          <option value="Concluído">Concluído</option>
+          <option value="Pendente">Pendente</option>
+        </select>
+      </div>
+    </div>
+  );
+};
 
-export default SideBar
+export default Sidebar
