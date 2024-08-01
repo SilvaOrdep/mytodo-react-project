@@ -1,11 +1,8 @@
-*{
+/* app.css */
+* {
   margin: 0;
   padding: 0;
-}
-
-.maincontent {
-  display: block; /* n tá funcionando */
-  /* deixar como um bloco do lado da side bar, sem entrar dentro da mesma */
+  /* box-sizing: border-box; */
 }
 
 body {
@@ -35,5 +32,26 @@ p {
 }
 
 input {
+  box-sizing: border-box;
+}
+
+/* Adicione essas regras */
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 250px; /* Ajuste conforme necessário */
+  padding: 20px;
+  background-color: #f0f0f0; /* Cor de fundo opcional */
+  border-right: 1px solid #ddd; /* Linha de separação opcional */
+  box-sizing: border-box;
+}
+
+.maincontent {
+  flex: 1; /* Faz com que o conteúdo principal ocupe o espaço restante */
+  padding: 20px;
+  margin-left: 20px;
   box-sizing: border-box;
 }
