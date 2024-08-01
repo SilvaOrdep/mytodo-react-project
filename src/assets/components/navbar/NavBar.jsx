@@ -3,7 +3,8 @@ import "./NavBar.css";
 const NavBar = () => {
   return (
     <div className="navbar">
-      NavBar
+      <div className="logo-navbar">MyToDo</div>
+      <div className="pesquisa-navbar"><input type="text" placeholder="Crie uma nota..."/></div>
     </div>
   )
 }
