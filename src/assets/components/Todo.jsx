@@ -4,11 +4,11 @@ const Todo = ({ todo }) => {
   return (
   <div className="todo">
     <div className="header">
-      <h2>{todo.text} </h2>
-      <div className="category">({todo.category})</div>
+      <h2>{todo.text}</h2>
+      <div className="category">(trabalho)</div>
     </div>
     <div className="description">
-      <p>descrição (a desenvolver)</p>
+      <p>dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado dival é viado </p>
     </div>
     <div className="mainButtons">
       <button><i class="bi bi-check-square"></i></button>

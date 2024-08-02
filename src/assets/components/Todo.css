@@ -36,6 +36,8 @@
   display: flex;
   justify-content: flex-end;
   align-content: flex-end;
+  column-gap: 20px;
+  margin-top: auto;
 }
 
 .todo button {
