@@ -24,9 +24,5 @@ body, html {
   padding: 30px;
   flex-grow: 1;
   overflow-y: auto;
-<<<<<<< HEAD
-}
-=======
   height: 100vh;
 }
->>>>>>> 79055b1c4dc02668ee3f7a7596d5f4d737d4c3de
