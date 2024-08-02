@@ -26,3 +26,11 @@ body, html {
   overflow-y: auto;
   height: 100vh;
 }
+
+.todo-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  justify-content: space-around;
+}

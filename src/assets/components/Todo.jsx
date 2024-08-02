@@ -11,9 +11,9 @@ const Todo = ({ todo }) => {
       <p>descrição (a desenvolver)</p>
     </div>
     <div className="mainButtons">
-      <button>completar</button>
-      <button>editar</button>
-      <button>apagar</button>
+      <button><i class="bi bi-check-square"></i></button>
+      <button><i class="bi bi-pencil-square"></i></button>
+      <button><i class="bi bi-trash"></i></button>
     </div>
   </div>
   )
