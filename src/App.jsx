@@ -5,6 +5,9 @@ import NavBar from "./assets/components/navbar/NavBar";
 import SideBar from "./assets/components/sidebar/SideBar";
 import NoteCreator from "./assets/components/notecreator/NoteCreator";
 import Todo from "./assets/components/Todo";
+// icones do bootstrap
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 function App() {
   // eslint-disable-next-line no-unused-vars

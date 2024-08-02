@@ -11,4 +11,16 @@
   font-size: 30px;
   text-align: center;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  /* border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  padding: 1rem 2rem;
+  color: rgb(22, 77, 26);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 1000;
+  top: 0;
+  position: relative; */
 }
