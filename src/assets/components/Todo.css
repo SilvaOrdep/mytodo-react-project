@@ -1,7 +1,43 @@
-.app {
-  max-width: 600px;
-  margin: 0 auto 300px;
-  background-color: #efefef;
-  padding: 20px 30px;
-  border-radius: 10px;
+.todo-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  justify-content: space-around;
+
+}
+
+.todo {
+  height: 300px;
+  width: 585px;
+  padding: 40px;
+
+  border: 1px solid rgba(0, 0,0, 0.5);
+  border-radius: 6px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.category {
+  align-content: center;
+  text-align: center;
+  background-color: #EBEBEB;
+  color: #737373;
+  height: 38px;
+  width: 120px;
+  border-radius: 6px;
+}
+
+.todo h2 {
+  font-size: 32px;
+}
+
+.mainButtons {
+  text-align: end;
+  
 }
