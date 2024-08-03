@@ -3,7 +3,10 @@ import "./NavBar.css";
 const NavBar = ({ search, setSearch }) => {
   return (
     <div className="navbar">
-      <div className="logo-navbar">MyToDo</div>
+      <div className="logo-navbar">
+        <i class="bi bi-sticky-fill"></i>
+        <h2>My<span>ToDo</span></h2>
+      </div>
       <div className="search-container">
         <div className="input-wrapper">
           <i className="bi bi-search search-icon"></i>

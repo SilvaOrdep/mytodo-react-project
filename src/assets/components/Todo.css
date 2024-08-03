@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .category {
@@ -49,7 +49,7 @@
   background-color: transparent;
   resize: none; /* o que faz o usuario redimensionar a box*/
   outline: none;
-  font-size: 20px;
+  font-size: 18px;
   height: 100px;
   font-family: "Poppins", sans-serif;
 }
