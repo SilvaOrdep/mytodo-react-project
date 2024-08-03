@@ -26,7 +26,8 @@ function App() {
       {
         id: Math.floor(Math.random() * 1000),
         text,
-        isCompleted: false,
+        isCompleted: "Pendente",
+        isCompletedValidation:false,
       },
     ];
 
@@ -43,6 +44,14 @@ function App() {
     saveNotes(filteredTodos);
   };
 
+  // Criar fucntion de validação
+  const completeTodo = (id) => {
+    const newTodos = [...todos];
+    newTodos.map((todo)=> todo.id === id ? todo.isCompleted="Concluído"/*function de validar*/: todo)
+    setTodos(newTodos);
+    saveNotes(newTodos);
+  }
+
   const saveNotes = (notes) => {
     localStorage.setItem("notes", JSON.stringify(notes))
   }
@@ -56,7 +65,7 @@ function App() {
           <NoteCreator addTodo={addTodo} />
           <div className="todo-list">
             {todos.map((todo) => (
-              <Todo key={todo.id} todo={todo} removeTodo={removeTodo} />
+              <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completeTodo} />
             ))}
           </div>
         </div>

@@ -9,6 +9,13 @@
   box-sizing: border-box; /* Para garantir que o padding e a borda estejam incluídos na largura total */
 }
 
+#status {
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+
 .sidebar-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;

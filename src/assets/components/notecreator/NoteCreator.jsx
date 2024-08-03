@@ -6,7 +6,7 @@ function NoteCreator({ addTodo }) {
 
   const handeleSubmit = (e) => {
     e.preventDefault();
-    if(!value) return;
+    if (!value) return;
     addTodo(value);
     setvalue("");
     console.log(value);
@@ -33,7 +33,7 @@ function NoteCreator({ addTodo }) {
         <input
           type="text"
           id="input-box"
-          placeholder="Criar tarefa"
+          placeholder="Criar tarefa..."
           value={value}
           onChange={(e) => setvalue(e.target.value)}
         />
