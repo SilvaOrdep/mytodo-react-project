@@ -13,10 +13,6 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [search, setSearch] = useState("");
 
-  // filtro
-  const [filter, setFilter] = useState("Todos");
-
-
   // salvar na local storage
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem("notes"));
@@ -31,7 +27,8 @@ function App() {
       {
         id: Math.floor(Math.random() * 1000),
         text,
-        isCompletedValidation:false,
+        description,
+        isCompletedValidation: false,
       },
     ];
 
@@ -42,36 +39,67 @@ function App() {
   const removeTodo = (id) => {
     const newTodos = [...todos];
     const filteredTodos = newTodos.filter((todo) =>
-    todo.id !== id ? todo : null
+      todo.id !== id ? todo : null
     );
     setTodos(filteredTodos);
     saveNotes(filteredTodos);
   };
 
-
   // Criar fucntion de validação
   const completeTodo = (id) => {
     const newTodos = [...todos];
-    newTodos.map((todo)=> todo.id === id ? todo.isCompletedValidation=!todo.isCompletedValidation : todo)
+    newTodos.map((todo) =>
+      todo.id === id
+        ? (todo.isCompletedValidation = !todo.isCompletedValidation)
+        : todo
+    );
     setTodos(newTodos);
     saveNotes(newTodos);
-  }
+  };
+
+  const updateDescription = (id, description) => {
+    const newTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, description } : todo
+    );
+    setTodos(newTodos);
+    saveNotes(newTodos);
+  };
 
   const saveNotes = (notes) => {
-    localStorage.setItem("notes", JSON.stringify(notes))
-  }
+    localStorage.setItem("notes", JSON.stringify(notes));
+  };
+
+  // filtro
+  const [filter, setFilter] = useState("Todos");
 
   return (
     <>
-      <NavBar search={search} setSearch={setSearch}/>
+      <NavBar search={search} setSearch={setSearch} />
       <div className="container">
-        <SideBar filter={filter} setFilter={setFilter}/>
+        <SideBar filter={filter} setFilter={setFilter} />
         <div className="maincontent">
           <NoteCreator addTodo={addTodo} />
           <div className="todo-list">
-            {todos.filter((todo)=> todo.text.toLowerCase().includes(search.toLocaleLowerCase())).map((todo) => (
-              <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completeTodo} />
-            ))}
+            {todos
+              .filter((todo) =>
+                filter === "Todos"
+                  ? true
+                  : filter === "Concluído"
+                  ? todo.isCompletedValidation
+                  : !todo.isCompletedValidation
+              )
+              .filter((todo) =>
+                todo.text.toLowerCase().includes(search.toLocaleLowerCase())
+              )
+              .map((todo) => (
+                <Todo
+                  key={todo.id}
+                  todo={todo}
+                  removeTodo={removeTodo}
+                  completeTodo={completeTodo}
+                  updateDescription={updateDescription}
+                />
+              ))}
           </div>
         </div>
       </div>
