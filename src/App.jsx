@@ -11,6 +11,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
   // eslint-disable-next-line no-unused-vars
   const [todos, setTodos] = useState([]);
+  const [search, setSearch] = useState("");
 
   // salvar na local storage
   useEffect(() => {
@@ -26,7 +27,6 @@ function App() {
       {
         id: Math.floor(Math.random() * 1000),
         text,
-        isCompleted: "Pendente",
         isCompletedValidation:false,
       },
     ];
@@ -44,10 +44,11 @@ function App() {
     saveNotes(filteredTodos);
   };
 
+
   // Criar fucntion de validação
   const completeTodo = (id) => {
     const newTodos = [...todos];
-    newTodos.map((todo)=> todo.id === id ? todo.isCompleted="Concluído"/*function de validar*/: todo)
+    newTodos.map((todo)=> todo.id === id ? todo.isCompletedValidation=!todo.isCompletedValidation : todo)
     setTodos(newTodos);
     saveNotes(newTodos);
   }
@@ -58,13 +59,13 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar search={search} setSearch={setSearch}/>
       <div className="container">
         <SideBar />
         <div className="maincontent">
           <NoteCreator addTodo={addTodo} />
           <div className="todo-list">
-            {todos.map((todo) => (
+            {todos.filter((todo)=> todo.text.toLowerCase().includes(search.toLocaleLowerCase())).map((todo) => (
               <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completeTodo} />
             ))}
           </div>

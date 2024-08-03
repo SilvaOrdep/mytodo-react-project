@@ -1,6 +1,6 @@
 import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = ({ search, setSearch }) => {
   return (
     <div className="navbar">
       <div className="logo-navbar">MyToDo</div>
@@ -11,6 +11,8 @@ const NavBar = () => {
             type="text"
             id="search-input"
             placeholder="Digite o nome de uma tarefa"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
       </div>
