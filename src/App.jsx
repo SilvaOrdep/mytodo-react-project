@@ -13,6 +13,10 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [search, setSearch] = useState("");
 
+  // filtro
+  const [filter, setFilter] = useState("Todos");
+
+
   // salvar na local storage
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem("notes"));
@@ -61,7 +65,7 @@ function App() {
     <>
       <NavBar search={search} setSearch={setSearch}/>
       <div className="container">
-        <SideBar />
+        <SideBar filter={filter} setFilter={setFilter}/>
         <div className="maincontent">
           <NoteCreator addTodo={addTodo} />
           <div className="todo-list">
