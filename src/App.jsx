@@ -27,7 +27,6 @@ function App() {
       {
         id: Math.floor(Math.random() * 1000),
         text,
-        description,
         isCompletedValidation: false,
       },
     ];
@@ -52,14 +51,6 @@ function App() {
       todo.id === id
         ? (todo.isCompletedValidation = !todo.isCompletedValidation)
         : todo
-    );
-    setTodos(newTodos);
-    saveNotes(newTodos);
-  };
-
-  const updateDescription = (id, description) => {
-    const newTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, description } : todo
     );
     setTodos(newTodos);
     saveNotes(newTodos);
@@ -97,7 +88,6 @@ function App() {
                   todo={todo}
                   removeTodo={removeTodo}
                   completeTodo={completeTodo}
-                  updateDescription={updateDescription}
                 />
               ))}
           </div>
