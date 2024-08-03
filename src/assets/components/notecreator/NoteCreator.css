@@ -9,6 +9,7 @@
 
 .input-wrapper-note {
   position: relative;
+  width: 300px;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
