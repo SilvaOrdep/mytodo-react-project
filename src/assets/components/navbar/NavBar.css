@@ -30,7 +30,7 @@
   align-items: center;
   flex-grow: 1;
   position: relative;
-  margin-left: 160px;
+  margin-left: 150px;
 }
 
 .search-container i {
@@ -57,7 +57,6 @@
 
 .input-wrapper input {
   padding-left: 40px;
-  padding-right: 10px;
   width: 396px;
   height: 38px;
   border-radius: 6px;

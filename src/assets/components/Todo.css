@@ -9,13 +9,19 @@
 
   border: 1px solid rgba(0, 0,0, 0.5);
   border-radius: 6px;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.todo:hover {
+  box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.2);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .category {
@@ -30,6 +36,7 @@
 
 .todo h2 {
   font-size: 32px;
+  font-weight: 600;
 }
 
 .description {
@@ -42,6 +49,9 @@
   background-color: transparent;
   resize: none; /* o que faz o usuario redimensionar a box*/
   outline: none;
+  font-size: 20px;
+  height: 100px;
+  font-family: "Poppins", sans-serif;
 }
 
 .todo .mainButtons {
