@@ -12,6 +12,11 @@ body, html {
   color: #333;
 }
 
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
 /* Adicione essas regras */
 .container {
   display: flex;

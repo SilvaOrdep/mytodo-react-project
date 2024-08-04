@@ -15,6 +15,15 @@
 
 }
 
+.dark-mode .navbar {
+  background-color: #444;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .logo-navbar, .dark-mode .search-container, .dark-mode .bt-navbar {
+  color: #fff;
+}
+
 /* LOGO */
 .logo-navbar {
   display: flex;

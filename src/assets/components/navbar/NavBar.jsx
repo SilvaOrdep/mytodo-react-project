@@ -1,6 +1,6 @@
 import "./NavBar.css";
 
-const NavBar = ({ search, setSearch }) => {
+const NavBar = ({ search, setSearch, darkMode, toggleDarkMode }) => {
   return (
     <div className="navbar">
       <div className="logo-navbar">
@@ -19,8 +19,8 @@ const NavBar = ({ search, setSearch }) => {
           />
         </div>
       </div>
-      <button className="bt-navbar">
-        <i className="bi bi-moon-fill"></i>
+      <button className="bt-navbar" onClick={toggleDarkMode}>
+        <i className={`bi ${darkMode ? "bi-sun-fill" : "bi-moon-fill"}`}></i>
       </button>
     </div>
   );
