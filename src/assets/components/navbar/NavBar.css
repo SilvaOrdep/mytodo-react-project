@@ -15,6 +15,15 @@
 
 }
 
+.dark-mode .navbar {
+  background-color: #444;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .logo-navbar, .dark-mode .search-container, .dark-mode .bt-navbar {
+  color: #fff;
+}
+
 /* LOGO */
 .logo-navbar {
   display: flex;
@@ -86,4 +95,20 @@
   justify-content: center;
   padding: 5px;
   margin-right: 20px;
+}
+
+/* Media Query */
+
+@media (max-width: 768px) {
+  .search-container {
+    padding: 0 20px;
+  }
+
+  .input-wrapper input {
+    width: 100%;
+  }
+
+  .input-wrapper input::placeholder {
+    font-size: 10px;
+  }
 }

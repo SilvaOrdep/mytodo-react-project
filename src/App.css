@@ -12,6 +12,11 @@ body, html {
   color: #333;
 }
 
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
 /* Adicione essas regras */
 .container {
   display: flex;
@@ -30,8 +35,33 @@ body, html {
 
 .todo-list {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   flex-wrap: wrap;
-  row-gap: 25px;
-  justify-content: space-around;
+  /* row-gap: 25px; */
+  justify-content:center;
+  gap: 20px;
+}
+
+
+
+/* Media Query */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .maincontent {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .todo-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .todo {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }

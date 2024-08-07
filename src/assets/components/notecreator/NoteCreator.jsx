@@ -3,12 +3,14 @@ import "./NoteCreator.css";
 
 function NoteCreator({ addTodo }) {
   const [value, setvalue] = useState("");
+  const [description, setDescription] = useState("")
 
   const handeleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
-    addTodo(value);
+    addTodo(value, description);
     setvalue("");
+    setDescription("")
     console.log(value);
   };
   return (

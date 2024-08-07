@@ -34,3 +34,17 @@
   font-size: 1rem;
   box-shadow: 0 1px 5px rgba(0,0,0,0.1);
 }
+
+.dark-mode .input-wrapper-note input {
+  background-color: #E6E6E7;
+  color: #fff;
+  border: 1px solid #777;
+}
+
+/* Media Query */
+
+@media (max-width: 768px) {
+  .input-wrapper-note {
+    width: 100%;
+  }
+}

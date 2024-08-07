@@ -12,6 +12,15 @@ function App() {
   // eslint-disable-next-line no-unused-vars
   const [todos, setTodos] = useState([]);
   const [search, setSearch] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
 
   // salvar na local storage
   useEffect(() => {
@@ -27,7 +36,7 @@ function App() {
       {
         id: Math.floor(Math.random() * 1000),
         text,
-        isCompletedValidation:false,
+        isCompletedValidation: false,
       },
     ];
 
@@ -38,36 +47,67 @@ function App() {
   const removeTodo = (id) => {
     const newTodos = [...todos];
     const filteredTodos = newTodos.filter((todo) =>
-    todo.id !== id ? todo : null
+      todo.id !== id ? todo : null
     );
     setTodos(filteredTodos);
     saveNotes(filteredTodos);
   };
 
-
   // Criar fucntion de validação
   const completeTodo = (id) => {
     const newTodos = [...todos];
-    newTodos.map((todo)=> todo.id === id ? todo.isCompletedValidation=!todo.isCompletedValidation : todo)
+    newTodos.map((todo) =>
+      todo.id === id
+        ? (todo.isCompletedValidation = !todo.isCompletedValidation)
+        : todo
+    );
     setTodos(newTodos);
     saveNotes(newTodos);
-  }
+  };
 
   const saveNotes = (notes) => {
-    localStorage.setItem("notes", JSON.stringify(notes))
-  }
+    localStorage.setItem("notes", JSON.stringify(notes));
+  };
+
+  // filtro
+  const [filter, setFilter] = useState("Todos");
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    if (!darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  };
 
   return (
     <>
-      <NavBar search={search} setSearch={setSearch}/>
-      <div className="container">
-        <SideBar />
+      <NavBar search={search} setSearch={setSearch} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <div className={`container ${darkMode ? "dark-mode" : ""}`}>
+        <SideBar filter={filter} setFilter={setFilter} />
         <div className="maincontent">
           <NoteCreator addTodo={addTodo} />
           <div className="todo-list">
-            {todos.filter((todo)=> todo.text.toLowerCase().includes(search.toLocaleLowerCase())).map((todo) => (
-              <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completeTodo} />
-            ))}
+            {todos
+              .filter((todo) =>
+                filter === "Todos"
+                  ? true
+                  : filter === "Concluído"
+                  ? todo.isCompletedValidation
+                  : !todo.isCompletedValidation
+              )
+              .filter((todo) =>
+                todo.text.toLowerCase().includes(search.toLocaleLowerCase())
+              )
+              .map((todo) => (
+                <Todo
+                  key={todo.id}
+                  todo={todo}
+                  removeTodo={removeTodo}
+                  completeTodo={completeTodo}
+                />
+              ))}
           </div>
         </div>
       </div>
