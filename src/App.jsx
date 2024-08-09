@@ -1,49 +1,123 @@
-import { useState } from 'react';
+import { useState, useEffect } from "react";
+
 import "./App.css";
+import NavBar from "./assets/components/navbar/NavBar";
+import SideBar from "./assets/components/sidebar/SideBar";
+import NoteCreator from "./assets/components/notecreator/NoteCreator";
+import Todo from "./assets/components/Todo";
+// icones do bootstrap
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   // eslint-disable-next-line no-unused-vars
-  const [todos, setTodos] = useState([
-    {
-      id:1,
-      text:"canso",
-      category:"Trabalho",
-      isCompleted:false,
-    },
-    {
-      id:2,
-      text:"canso ruim",
-      category:"Estudo",
-      isCompleted:false,
-    },
-    {
-      id:3,
-      text:"Lula",
-      category:"Pessoal",
-      isCompleted:true,
-    },
+  const [todos, setTodos] = useState([]);
+  const [search, setSearch] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
 
-  ])
-  return <div className="app">
-    <h1>Lista de Tarefas</h1>
-    <div className="todo-list">
-      {todos.map((todo)=>(
-        // eslint-disable-next-line react/jsx-key
-        <div className="todo">
-          <div className="content">
-            <p>{todo.text} </p>
-            <p className="category">({todo.category})</p>
-          </div>
-          <div>
-            <button>completar</button>
-            <button>editar</button>
-            <button>apagar</button>
+  // salvar na local storage
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem("notes"));
+    if (savedTodos) {
+      setTodos(savedTodos);
+    }
+  }, []);
+
+  const addTodo = (text) => {
+    const newTodos = [
+      ...todos,
+      {
+        id: Math.floor(Math.random() * 1000),
+        text,
+        isCompletedValidation: false,
+      },
+    ];
+
+    setTodos(newTodos);
+    saveNotes(newTodos);
+  };
+
+  const removeTodo = (id) => {
+    const newTodos = [...todos];
+    const filteredTodos = newTodos.filter((todo) =>
+      todo.id !== id ? todo : null
+    );
+    setTodos(filteredTodos);
+    saveNotes(filteredTodos);
+  };
+
+  // Criar fucntion de validação
+  const completeTodo = (id) => {
+    const newTodos = [...todos];
+    newTodos.map((todo) =>
+      todo.id === id
+        ? (todo.isCompletedValidation = !todo.isCompletedValidation)
+        : todo
+    );
+    setTodos(newTodos);
+    saveNotes(newTodos);
+  };
+
+  const saveNotes = (notes) => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  };
+
+  // filtro
+  const [filter, setFilter] = useState("Todos");
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    if (!darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  };
+
+  return (
+    <>
+      <NavBar
+        search={search}
+        setSearch={setSearch}
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+      />
+      <div className={`container ${darkMode ? "dark-mode" : ""}`}>
+        <SideBar filter={filter} setFilter={setFilter} />
+        <div className="maincontent">
+          <NoteCreator addTodo={addTodo} />
+          <div className="todo-list">
+            {todos
+              .filter((todo) =>
+                filter === "Todos"
+                  ? true
+                  : filter === "Concluído"
+                  ? todo.isCompletedValidation
+                  : !todo.isCompletedValidation
+              )
+              .filter((todo) =>
+                todo.text.toLowerCase().includes(search.toLocaleLowerCase())
+              )
+              .map((todo) => (
+                <Todo
+                  key={todo.id}
+                  todo={todo}
+                  removeTodo={removeTodo}
+                  completeTodo={completeTodo}
+                />
+              ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>;
+      </div>
+    </>
+  );
 }
 
 export default App;

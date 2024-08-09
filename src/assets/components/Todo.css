@@ -1,0 +1,131 @@
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 300px;
+  width: 585px;
+  padding: 40px;
+
+  border: 1px solid rgba(0, 0,0, 0.5);
+  border-radius: 6px;
+
+  transition: all 0.3s ease-in-out;
+}
+
+
+.todo:hover {
+  box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.2);
+}
+
+.dark-mode .todo {
+  background-color: #444;
+  border: none;
+}
+
+.dark-mode .todo:hover {
+  box-shadow: 0px 2px 2px 2px rgba(255, 255, 255, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.category {
+  align-content: center;
+  text-align: center;
+  background-color: #EBEBEB;
+  color: #737373;
+  height: 38px;
+  width: 120px;
+  border-radius: 6px;
+}
+
+.dark-mode .category {
+  background-color: #555;
+  color: #ccc;
+}
+
+.todo h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.description {
+  display: grid;
+  grid-template-columns: repeat(auto-fill);
+}
+
+.description textarea {
+  border: none;
+  background-color: transparent;
+  resize: none; /* o que faz o usuario redimensionar a box*/
+  outline: none;
+  font-size: 16px;
+  height: 117px;
+  font-family: "Poppins", sans-serif;
+}
+
+.dark-mode .description textarea {
+  color: #fff;
+}
+
+.todo .mainButtons {
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  column-gap: 20px;
+  margin-top: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.dark-mode .todo .mainButtons button {
+  background: transparent;
+}
+
+.todo button {
+  color: #077439;
+  font-size: 25px;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out
+}
+
+.todo button:hover {
+  transform: scale(1.15);
+}
+
+.todo button:active {
+  transition: 200ms;
+  transform: scale(0.9);
+}
+
+.dark-mode .todo button:hover {
+  transform: scale(1.15);
+}
+.dark-mode .todo button:active {
+  transition: 200ms;
+  transform: scale(0.9);
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+  .todo {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .todo h2 {
+    font-size: 24px;
+  }
+
+  .category {
+    width: auto;
+    padding: 12px;
+  }
+}
