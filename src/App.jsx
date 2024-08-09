@@ -83,7 +83,12 @@ function App() {
 
   return (
     <>
-      <NavBar search={search} setSearch={setSearch} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <NavBar
+        search={search}
+        setSearch={setSearch}
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+      />
       <div className={`container ${darkMode ? "dark-mode" : ""}`}>
         <SideBar filter={filter} setFilter={setFilter} />
         <div className="maincontent">
@@ -113,5 +118,6 @@ function App() {
       </div>
     </>
   );
+}
 
 export default App;
