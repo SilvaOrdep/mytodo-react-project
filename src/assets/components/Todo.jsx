@@ -11,7 +11,7 @@ const Todo = ({ todo, removeTodo, completeTodo }) => {
         <textarea maxLength={170} placeholder="Texto">{todo.description}</textarea>
       </div>
       <div className="mainButtons">
-        <button><i class="bi bi-check-square" onClick={() => completeTodo(todo.id)}></i></button>
+        <button className="check-button">{todo.isCompletedValidation ? <i class="bi bi-check-square" onClick={() => completeTodo(todo.id)}></i> : <i class="bi bi-square" onClick={() => completeTodo(todo.id)}></i>}</button>
         <button className="remove" onClick={() => removeTodo(todo.id)}><i class="bi bi-trash"></i></button>
       </div>
     </div>
